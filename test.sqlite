@@ -1,0 +1,32 @@
+SELECT * FROM trips;
+
+SELECT * FROM riders;
+
+SELECT * FROM cars;
+
+SELECT * FROM riders
+CROSS JOIN cars;
+
+SELECT * FROM trips
+LEFT JOIN riders
+ON trips.rider_id = riders.id;
+
+SELECT trips.id as 'trip id', trips.date as 'trip date', trips.pickup as 'pickup', trips.dropoff as 'dropoff', cars.id as 'car id', cars.model as 'car model', cars.OS as 'car OS', cars.status as 'status', cars.trips_completed as 'completed' FROM trips, cars
+WHERE trips.car_id = cars.id;
+
+SELECT * FROM riders
+UNION
+SELECT * FROM riders2;
+
+SELECT ROUND(AVG(cost), 2) as 'avg trip cost' FROM trips;
+
+SELECT id, first, last, username, total_trips FROM riders
+WHERE total_trips < 500;
+
+SELECT COUNT(*) FROM cars
+WHERE status = 'active';
+
+SELECT id, trips_completed FROM cars
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 2;
